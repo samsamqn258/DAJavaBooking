@@ -24,6 +24,7 @@ public class Bookings {
     // ok ok ok
     // Kéo về đây đi con
     ////
+    /// ok
     boolean bookingStatus;
     boolean paymentStatus;
     double bookingPrice;
