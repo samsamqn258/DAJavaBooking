@@ -22,7 +22,7 @@ public class Bookings {
     LocalDateTime checkInDate;
     LocalDateTime checkOutDate;
     // ok ok ok
-    // Kéo về đây đi
+    // Kéo về đây đi con
     boolean bookingStatus;
     boolean paymentStatus;
     double bookingPrice;
