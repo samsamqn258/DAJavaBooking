@@ -21,6 +21,7 @@ public class Bookings {
     LocalDateTime bookingTime;
     LocalDateTime checkInDate;
     LocalDateTime checkOutDate;
+    // ok ok
     boolean bookingStatus;
     boolean paymentStatus;
     double bookingPrice;
