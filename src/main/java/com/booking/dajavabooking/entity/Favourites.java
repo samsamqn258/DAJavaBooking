@@ -1,2 +1,5 @@
-package com.booking.dajavabooking.entity;public class Favourites {
+package com.booking.dajavabooking.entity;
+
+public class Favourites {
+
 }
