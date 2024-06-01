@@ -10,14 +10,25 @@ import lombok.experimental.FieldDefaults;
 import java.time.LocalDate;
 
 @Entity
+@Table(name = "Payments")
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Payments {
+public class Payment {
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    String paymentId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    int paymentId;
     LocalDate paymentTime;
     double paymentPrice;
+
+    @OneToOne
+    @JoinColumn(name = "booking_id")
+    Booking booking;
+
+    @ManyToOne
+    @JoinColumn(name = "paymentType_id") // Sử dụng JoinColumn để xác định trường khóa ngoại
+    PaymentType paymentType;
+
+
 }

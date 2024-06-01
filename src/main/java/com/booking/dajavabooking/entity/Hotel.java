@@ -7,15 +7,18 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.FieldDefaults;
 
+import java.util.List;
+
 @Entity
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Hotels {
+@Table(name = "Hotels")
+public class Hotel {
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    String hotelId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    int hotelId;
     String hotelName;
     String hotelImage1;
     String hotelImage2;
@@ -26,4 +29,18 @@ public class Hotels {
     @Column(length = 11)
     String phoneNumber;
     boolean isActive;
+    @ManyToOne
+    @JoinColumn(name = "area_id")
+    Area area;
+    @OneToMany(mappedBy = "hotel")
+    List<Room> rooms;
+    @ManyToOne
+    @JoinColumn(name = "hotelType_id")
+    HotelType hotelType;
+    @OneToMany(mappedBy = "hotel")
+    List<Favourite> favourites;
+    @OneToOne
+    @JoinColumn(name = "user_id")
+    User user;
+
 }

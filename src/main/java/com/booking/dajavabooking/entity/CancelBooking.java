@@ -6,7 +6,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.FieldDefaults;
-import java.time.LocalDateTime;
+
+import java.time.LocalDate;
 
 
 @Entity
@@ -14,14 +15,11 @@ import java.time.LocalDateTime;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Evaluates {
+@Table(name = "CancelBookings")
+public class CancelBooking {
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    String evaluateId;
-    String commentGood;
-    String commentBad;
-    LocalDateTime evaluationTime;
-    double evaluationScore;
-    String evaluationImage1;
-    String evaluationImage2;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    int cancelId;
+    LocalDate cancelTime;
+    String cancelReason;
 }

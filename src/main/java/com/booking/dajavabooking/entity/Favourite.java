@@ -6,18 +6,24 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.FieldDefaults;
-import java.time.LocalDateTime;
-
 
 @Entity
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class CancelBookings {
+@Table(name = "Favourites")
+public class Favourite {
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    String cancelId;
-    LocalDateTime cancelTime;
-    String cancelReason;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+
+    @ManyToOne
+    @JoinColumn(name = "hotel_id")
+    private Hotel hotel;
+
 }

@@ -7,21 +7,32 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.FieldDefaults;
 
-import java.time.LocalDate;
+
+import java.util.List;
 
 @Entity
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Users {
+@Table(name = "Users")
+public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    String userId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    int userId;
     String email;
     String password;
     String userName;
     String phoneNumber;
     int role;
     String userImage;
+
+    @OneToMany(mappedBy = "user")
+    List<Booking> bookings;
+
+    @OneToMany(mappedBy = "user")
+    List<Favourite> favourites;
+
+    @OneToOne(mappedBy = "user")
+    Hotel hotel;
 }

@@ -5,12 +5,18 @@ import lombok.AccessLevel;
 import lombok.Data;
 import lombok.experimental.FieldDefaults;
 
+import java.util.List;
+
 @Entity
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Data
-public class RoomTypes {
+@Table(name = "RoomTypes")
+
+public class RoomType {
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    String roomTypeId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    int roomTypeId;
     String roomTypeName;
+    @OneToMany(mappedBy = "roomType")
+    List<Room> rooms;
 }
